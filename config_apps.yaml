@@ -1,0 +1,7 @@
+apps:
+  - name: App 1
+    url: 'https://link-to-app1.com'
+  - name: App 2
+    url: 'https://link-to-app2.com'
+  - name: App 3
+    url: 'https://link-to-app3.com'

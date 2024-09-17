@@ -1,0 +1,48 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+.sidebar {
+    height: 100%;
+    width: 200px; /* Default width */
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding-top: 20px;
+    background-color: #f7f7f7;
+    transition: width 0.5s; /* Smooth transition for folding action */
+}
+
+/* Update: Ensure buttons have a minimum presence even when collapsed */
+.sidebar button {
+    padding: 10px;
+    border: none;
+    background-color: #f7f7f7;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    display: block; /* allows button to adjust with sidebar width */
+    overflow: hidden; /* Hide text when sidebar is collapsed */
+    transition: min-width 0.5s; /* Match the sidebar transition */
+}
+
+iframe {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: calc(100% - 200px);
+    height: 100%;
+    border: none;
+    transition: width 0.5s;
+}
+
+/* Reflecting the sidebar's collapsed state */
+.collapsed {
+    width: 15px;
+    transition: width 0.5s;
+}
+.fullwidth {
+    width: 100%;
+}

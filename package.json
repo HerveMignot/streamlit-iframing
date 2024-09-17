@@ -1,0 +1,15 @@
+{
+  "name": "streamlit-factory",
+  "version": "1.0.0",
+  "description": "Testing a streamlit factory",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0",
+    "js-yaml": "^4.1.0"
+  }
+}

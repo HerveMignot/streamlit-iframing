@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <button onclick="toggleSidebar()">+/-</button>
+        <div id="sidebarContent">
+            <!-- Other sidebar content buttons go here -->
+        </div>
+        <!-- App buttons will be dynamically added here -->
+    </div>
+    <iframe id="appFrame" src=""></iframe>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('/api/app-urls')
+                .then(response => response.json())
+                .then(apps => {
+                    const sidebar = document.querySelector('.sidebar');
+                    apps.forEach(app => {
+                        const button = document.createElement('button');
+                        button.textContent = app.name;
+                        button.onclick = () => loadApp(app.url);
+                        sidebar.appendChild(button);
+                    });
+                })
+                .catch(console.error);
+        });
+
+        function loadApp(url) {
+            document.getElementById('appFrame').src = url;
+        }
+
+        function toggleSidebar() {
+            const sidebarContent = document.getElementById('sidebarContent');
+            const iframe = document.getElementById('appFrame');
+    
+            // Toggle collapsed state for sidebar content
+            sidebarContent.classList.toggle('collapsed');
+
+            // Adjust iframe width based on the sidebar content state
+            if (sidebarContent.classList.contains('collapsed')) {
+                iframe.style.width = 'calc(100% - 50px)'; // Adjust based on toggle button width
+            } else {
+                iframe.style.width = 'calc(100% - 200px)'; // Or your original sidebar width
+            }
+        }
+    </script>
+</body>
+</html>
